@@ -1,0 +1,46 @@
+name: currency-exchange-api
+
+summary: A Flask-based API for fetching real-time currency exchange rates.
+description: | 
+  A simple Flask-based API that provides real-time currency exchange rates using a web scraper. 
+  It supports querying exchange rates via a web form or through a REST API endpoint, returning results in JSON format.
+
+version: 1.0
+base: core22
+confinement: strict
+license: MIT
+title: Currency Exchange Free API
+contact: ziad.ahmedelbanna@outlook.com
+
+apps:
+  currency-exchange-api:
+    command: bin/python3 $SNAP/API/src/app.py
+    environment:
+      FLASK_APP: API/src/app.py
+      FLASK_ENV: production
+      PYTHONPATH: $SNAP
+    plugs:
+      - network
+      - network-bind
+
+parts:
+  source-code:
+    plugin: dump
+    source: .
+    stage:
+      - API/**
+      - Webscrapper/**
+      - README.md
+
+  currency-exchange-api:
+    after: [source-code]
+    plugin: python
+    source: .
+    python-packages:
+      - flask
+      - waitress
+    build-packages:
+      - python3-pip
+      - curl
+    stage-packages:
+      - curl
