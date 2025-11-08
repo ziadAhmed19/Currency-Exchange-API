@@ -5,10 +5,13 @@ description: |
   A simple Flask-based API that provides real-time currency exchange rates using a web scraper. 
   It supports querying exchange rates via a web form or through a REST API endpoint, returning results in JSON format.
 
+source-code:
+  - https://github.com/ziadAhmed19/Currency-Exchange-API.git
+
 version: 1.0
 base: core22
 confinement: strict
-license: MIT
+license: GPL-3.0
 title: Currency Exchange Free API
 contact: ziad.ahmedelbanna@outlook.com
 
